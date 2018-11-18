@@ -12,6 +12,22 @@ var app = express();
 
 const route = require('./routes/route');
 
+//conect to the mongodb
+mongoose.connect('mongodb://localhost:27017/contactlist');
+
+//on connection
+mongoose.connection.on('connected',()=>{
+    console.log('Connected to database mongodb @ 27017');
+});
+
+//error
+mongoose.connection.on('error',(err)=>{
+    if(err)
+    {
+        console.log('Error in database connection:'+ err);
+    }  
+});
+
 //port no
 const port = 3000;
 
