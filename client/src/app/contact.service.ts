@@ -14,4 +14,9 @@ export class ContactService {
       .pipe(map(res => res));
   }
 
+  //add contact method
+  addContact(newContact){
+    var header
+  }
+
 }
