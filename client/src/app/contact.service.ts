@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ContactService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   //retrieving ContactService
   getContacts()
   {
     return this.http.get('http://localhost:3000/api/contacts')
-  
+      .pipe(map(res => res));
   }
 
 }
