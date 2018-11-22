@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -16,7 +16,16 @@ export class ContactService {
 
   //add contact method
   addContact(newContact){
-    var header
+    var headers = new HttpHeaders();
+    headers.append('Content-type','application/json');
+    return this.http.post('http://localhost:3000/api/contact', newContact, {headers:headers})
+      .pipe(map(res => res));
+  }
+
+  //delete method
+  deleteContact(id){
+    return this.http.delete('http://localhost:3000/api/contact'+id)
+      .pipe(map(res => res));
   }
 
 }
