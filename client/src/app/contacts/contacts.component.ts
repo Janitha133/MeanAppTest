@@ -42,6 +42,8 @@ export class ContactsComponent implements OnInit {
             }
           }
         }
+        this.contactService.getContacts()
+        .subscribe((contcts: Contact[]) => this.contacts = contcts);   
       });
   }
 
